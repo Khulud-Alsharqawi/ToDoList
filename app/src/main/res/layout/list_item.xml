@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".listFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="#94D395B7"
+        android:layout_marginTop="16dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tittelText"
+            android:layout_width="224dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="112dp"
+            android:text="@string/title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="4dp"
+            android:checked="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tittelText"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/deudatetext"
+            android:layout_width="74dp"
+            android:layout_height="27dp"
+            android:layout_marginTop="68dp"
+            android:text="@string/deudate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tittelText"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/deletButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toEndOf="@+id/tittelText"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_delete_24"
+            tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck"
+            android:contentDescription="TODO" />
+
+        <ImageButton
+            android:id="@+id/editbutton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:layout_constraintBottom_toTopOf="@+id/deudatetext"
+            app:layout_constraintEnd_toStartOf="@+id/deletButton"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tittelText"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.8"
+            app:srcCompat="@drawable/ic_baseline_create_24" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

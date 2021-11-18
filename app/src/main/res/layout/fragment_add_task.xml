@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.todolist.ViewModleTodo" />
+        <variable
+            name="addTask"
+            type="com.example.todolist.AddTaskFragment" />
+
+    </data>
+
+    <FrameLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".AddTaskFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#94D395B7">
+
+            <EditText
+                android:id="@+id/addnewtask"
+                android:layout_width="178dp"
+                android:layout_height="62dp"
+                android:layout_marginTop="52dp"
+                android:ems="10"
+                android:hint="Task title"
+                android:inputType="textPersonName"
+                android:text="@={viewModel.title}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.227"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/taskdescription"
+                android:layout_width="311dp"
+                android:layout_height="125dp"
+                android:layout_marginBottom="384dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@={viewModel.subTitle}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/taskdate"
+                android:layout_width="125dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="68dp"
+                android:ems="10"
+                android:inputType="date"
+                android:text="@={viewModel.data}"
+                app:layout_constraintBottom_toTopOf="@+id/taskdescription"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.509"
+                app:layout_constraintStart_toEndOf="@+id/addnewtask"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="24dp"
+                android:text="Important"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/savebutton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/taskdescription"
+                app:layout_constraintVertical_bias="0.065" />
+
+            <Button
+                android:id="@+id/savebutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="196dp"
+                android:onClick="@{()->addTask.newTask()}"
+                android:text="save"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </FrameLayout>
+</layout>
