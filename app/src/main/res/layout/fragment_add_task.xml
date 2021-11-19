@@ -24,73 +24,94 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#94D395B7">
+            android:background="@drawable/bg11">
 
             <EditText
                 android:id="@+id/addnewtask"
-                android:layout_width="178dp"
-                android:layout_height="62dp"
-                android:layout_marginTop="52dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="196dp"
+                android:layout_marginBottom="40dp"
                 android:ems="10"
                 android:hint="Task title"
                 android:inputType="textPersonName"
-                android:text="@={viewModel.title}"
+                android:text="@={viewModel.vmTitle}"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/calendertxt"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.227"
+                app:layout_constraintHorizontal_bias="0.485"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/taskdescription"
-                android:layout_width="311dp"
-                android:layout_height="125dp"
-                android:layout_marginBottom="384dp"
+                android:layout_width="225dp"
+                android:layout_height="67dp"
+                android:layout_marginTop="136dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@={viewModel.subTitle}"
+                android:text="@={viewModel.vmSubTitle}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <EditText
-                android:id="@+id/taskdate"
-                android:layout_width="125dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="68dp"
-                android:ems="10"
-                android:inputType="date"
-                android:text="@={viewModel.data}"
-                app:layout_constraintBottom_toTopOf="@+id/taskdescription"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.509"
-                app:layout_constraintStart_toEndOf="@+id/addnewtask"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/calenderimg"
+                app:layout_constraintHorizontal_bias="0.476"
+                app:layout_constraintStart_toStartOf="@+id/calendertxt"
+                app:layout_constraintTop_toBottomOf="@+id/addnewtask"
+                app:layout_constraintVertical_bias="0.0"
                 tools:ignore="SpeakableTextPresentCheck" />
-
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="24dp"
-                android:text="Important"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/savebutton"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/taskdescription"
-                app:layout_constraintVertical_bias="0.065" />
 
             <Button
                 android:id="@+id/savebutton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="196dp"
-                android:onClick="@{()->addTask.newTask()}"
+                android:layout_marginTop="48dp"
+                android:layout_marginBottom="200dp"
                 android:text="save"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintEnd_toEndOf="@+id/taskdescription"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="@+id/taskdescription"
+                app:layout_constraintTop_toBottomOf="@+id/taskdescription" />
+
+            <ImageView
+                android:id="@+id/calenderimg"
+                android:layout_width="39dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="@{()-> addTask.pickDate()}"
+                app:layout_constraintBottom_toTopOf="@+id/taskdescription"
+                app:layout_constraintEnd_toEndOf="@+id/addnewtask"
+                app:layout_constraintStart_toEndOf="@+id/calendertxt"
+                app:layout_constraintTop_toBottomOf="@+id/addnewtask"
+                app:layout_constraintVertical_bias="0.333"
+                app:srcCompat="@drawable/ic_baseline_calendar_today_24" />
+
+            <EditText
+                android:id="@+id/calendertxt"
+                android:layout_width="185dp"
+                android:layout_height="49dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="13dp"
+                android:layout_marginBottom="35dp"
+                android:ems="10"
+                android:hint="date"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/taskdescription"
+                app:layout_constraintEnd_toStartOf="@+id/calenderimg"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/addnewtask"
+                app:layout_constraintTop_toBottomOf="@+id/addnewtask" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

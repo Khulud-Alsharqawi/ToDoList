@@ -8,8 +8,11 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.R
+import com.example.todolist.listFragmentDirections
 import com.example.todolist.model.listTasks
 
 class toDoListAdapter( var dataset: MutableList<listTasks>)
@@ -23,7 +26,7 @@ class toDoListAdapter( var dataset: MutableList<listTasks>)
         val dateView:TextView=view.findViewById(R.id.deudatetext)
         val checkview: CheckBox =view.findViewById(R.id.checkBox)
         val deletitem: ImageButton=view.findViewById(R.id.deletButton) //on click listener ->task delete
-
+        var edit :ImageButton=view.findViewById(R.id.editbutton)
 
     }
 
@@ -53,7 +56,13 @@ val item= dataset[position]
         holder.checkview.setOnCheckedChangeListener { _, isChecked ->
             toggleStrikeThrough(holder.titelView , isChecked)
         }
+// =========================================================================================
+        holder.edit.setOnClickListener {
 
+            var action =listFragmentDirections.actionListToEdit(item.title)
+            holder.edit.findNavController().navigate(action)
+
+        }
     }
 
     override fun getItemCount(): Int {

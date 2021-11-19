@@ -1,29 +1,27 @@
 package com.example.todolist
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
-import com.example.todolist.data.datasource
-import com.example.todolist.databinding.FragmentAddTaskBinding
+import com.example.todolist.databinding.FragmentEditeBinding
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.text.SimpleDateFormat
 import java.util.*
 
 
-class AddTaskFragment : Fragment() {
+class EditeFragment : Fragment() {
+
 
     var cal = ""
-    var binding: FragmentAddTaskBinding? = null
-//    lateinit var recyclerView: RecyclerView
+    var binding: FragmentEditeBinding?=null
 
-    val shareViewModel: ViewModleTodo by viewModels() // object of view model that connects with the fragment XML
+    val shareViewModel : ViewModleTodo by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -33,37 +31,34 @@ class AddTaskFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        binding = FragmentAddTaskBinding.inflate(inflater, container, false)
-        binding!!.lifecycleOwner = viewLifecycleOwner
-        val view = binding?.root
+        binding= FragmentEditeBinding.inflate(inflater,container,false)
+        binding!!.lifecycleOwner=viewLifecycleOwner
+        val view= binding?.root
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding?.apply {
             lifecycleOwner = viewLifecycleOwner
-            viewModel = shareViewModel
-            addTask = this@AddTaskFragment
-
-
-        }
-//        var cindex = 0
-//        arguments?.let {
-//            cindex = it?.getInt("index")
-//        }
-
-        binding?.savebutton?.setOnClickListener {
-            findNavController().navigate(AddTaskFragmentDirections.actionAddToList())
-            shareViewModel.NewTask()
+            viewModel=shareViewModel
+            updateTask=this@EditeFragment
         }
 
+       var orignailTitle:String=""
+        arguments?.let {
+            orignailTitle=it.getString("title")!!
+        }
+        shareViewModel.grabTask(orignailTitle)
 
+        binding?.updateButton?.setOnClickListener { view:View ->
+            Navigation.findNavController(view).navigate(EditeFragmentDirections.actionEToList())
+            shareViewModel.edit(orignailTitle)
+
+        }
     }
 
     fun pickDate() {
-
-        // fixed form MaterialDatePicker
+        // fixed form
         val datePicker =
             MaterialDatePicker.Builder.datePicker()
                 .setTitleText("Select date")
@@ -72,23 +67,23 @@ class AddTaskFragment : Fragment() {
 
         datePicker.show(parentFragmentManager, "DatePicker")
         datePicker.addOnPositiveButtonClickListener {
-            cal= readDate(it, "dd/MM/yyyy")
-        binding?.calendertxt?.setText(cal)
-            Log.e("TAG","add date:${cal}")
+            cal = readDate(it, "dd/MM/yyyy")
+            binding?.calendertxtupdate?.setText(cal)
         }
 
     }
-    // fixed form MaterialDatePicker
+    // fixed form
 
     private fun readDate(setDate: Long, datePattern: String): String {
         val format = SimpleDateFormat(datePattern, Locale.getDefault())
         return format.format(Date(setDate))
 
     }
+
         override fun onDestroy() {
             super.onDestroy()
-            binding = null
+            binding=null
         }
 
 
-    }
+}
