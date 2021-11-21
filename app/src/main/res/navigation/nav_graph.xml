@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/listFragment"
         android:name="com.example.todolist.listFragment"
-        android:label="fragment_list"
-        tools:layout="@layout/fragment_list" >
+        android:label="To Do List"
+        tools:layout="@layout/fragment_list">
         <action
             android:id="@+id/action_list_to_add"
             app:destination="@id/addTaskFragment"
@@ -22,24 +22,27 @@
     <fragment
         android:id="@+id/addTaskFragment"
         android:name="com.example.todolist.AddTaskFragment"
-        android:label="fragment_add_task"
-        tools:layout="@layout/fragment_add_task" >
+        android:label="Add New Task"
+        tools:layout="@layout/fragment_add_task">
         <action
             android:id="@+id/action_add_to_list"
             app:destination="@id/listFragment"
             app:popUpTo="@id/listFragment" />
-        <action
-            android:id="@+id/action_addTaskFragment_to_listFragment"
-            app:destination="@id/listFragment" />
+        <argument
+            android:name="addtitle"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/editeFragment"
-        android:name="com.example.todolist.editeFragment"
-        android:label="fragment_edite"
-        tools:layout="@layout/fragment_edite" >
+        android:name="com.example.todolist.EditeFragment"
+        android:label="Update Task"
+        tools:layout="@layout/fragment_edite">
         <action
-            android:id="@+id/action_edit_to_list"
+            android:id="@+id/action_e_to_list"
             app:destination="@id/listFragment"
             app:popUpTo="@id/listFragment" />
+        <argument
+            android:name="title"
+            app:argType="string" />
     </fragment>
 </navigation>

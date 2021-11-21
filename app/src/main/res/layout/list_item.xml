@@ -7,10 +7,11 @@
     tools:context=".listFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:background="#94D395B7"
+        android:layout_width="409dp"
+        android:layout_height="130dp"
         android:layout_marginTop="16dp"
-        android:layout_height="wrap_content">
+        android:background="#57F6EE90"
+        android:outlineProvider="bounds">
 
         <TextView
             android:id="@+id/tittelText"
@@ -18,6 +19,9 @@
             android:layout_height="45dp"
             android:layout_marginEnd="112dp"
             android:text="@string/title"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -36,10 +40,13 @@
 
         <TextView
             android:id="@+id/deudatetext"
-            android:layout_width="74dp"
-            android:layout_height="27dp"
-            android:layout_marginTop="68dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="76dp"
             android:text="@string/deudate"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/tittelText"
@@ -47,27 +54,62 @@
 
         <ImageButton
             android:id="@+id/deletButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="48dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="4dp"
+            android:background="@android:drawable/ic_menu_delete"
+            android:contentDescription="TODO"
+            app:layout_constraintBottom_toTopOf="@+id/deudatetext"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/tittelText"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.937"
             app:srcCompat="@drawable/ic_baseline_delete_24"
-            tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck"
-            android:contentDescription="TODO" />
+            tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck,TouchTargetSizeCheck" />
 
         <ImageButton
             android:id="@+id/editbutton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/ic_menu_edit"
+            android:contentDescription="TODO"
             app:layout_constraintBottom_toTopOf="@+id/deudatetext"
             app:layout_constraintEnd_toStartOf="@+id/deletButton"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/tittelText"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.8"
-            app:srcCompat="@drawable/ic_baseline_create_24" />
+            app:srcCompat="@drawable/ic_baseline_create_24"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/creationDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="16dp"
+            android:text="creation Date"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tittelText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+
+        <TextView
+            android:id="@+id/isPast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="10dp"
+            android:text="past/still there time"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/deudatetext"
+            app:layout_constraintStart_toStartOf="@+id/deudatetext"
+            app:layout_constraintTop_toBottomOf="@+id/deudatetext" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

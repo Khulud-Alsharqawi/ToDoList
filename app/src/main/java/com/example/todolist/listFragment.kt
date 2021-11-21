@@ -9,6 +9,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.Adapter.toDoListAdapter
 import com.example.todolist.data.datasource
+import com.example.todolist.data.myDB
 import com.example.todolist.databinding.FragmentListBinding
 
 
@@ -32,7 +33,7 @@ class listFragment : Fragment() {
        recyclerView= binding?.recyclerview!!
         binding?.recyclerview?.adapter=toDoListAdapter(dataset)
         binding?.addbutton?.setOnClickListener { view: View ->
-            Navigation.findNavController(view).navigate(listFragmentDirections.actionListToAdd())
+            Navigation.findNavController(view).navigate(listFragmentDirections.actionListToAdd(addtitle = ""))
         }
     }
     override fun onDestroyView() {

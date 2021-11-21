@@ -8,81 +8,130 @@
         name="viewModel"
         type="com.example.todolist.ViewModleTodo" />
 
-<!--        <variable-->
-<!--            name="updateTask"-->
-<!--            type="com.example.todolist.editeFragment" />-->
+        <variable
+            name="updateTask"
+            type="com.example.todolist.EditeFragment" />
     </data>
 
     <FrameLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".editeFragment">
+        tools:context=".EditeTaskFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:background="#94D395B7"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@drawable/background">
 
-            <EditText
-                android:id="@+id/edittask"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="56dp"
-                android:ems="10"
-                android:hint="Task Title"
-                android:inputType="textPersonName"
-                android:text="@={viewModel.title}"
-                android:minHeight="48dp"
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="215dp"
+                android:layout_height="57dp"
+                android:layout_marginTop="150dp"
+                android:layout_marginBottom="29dp"
+                android:text="@string/edite_your_task"
+                android:textAlignment="center"
+                android:textColor="#06198A"
+                android:textSize="24sp"
+                android:textStyle="bold|italic"
+                app:layout_constraintBottom_toTopOf="@+id/updatetask"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.144"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/editdate"
-                android:layout_width="134dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="100dp"
+                android:id="@+id/updatetask"
+                android:layout_width="247dp"
+                android:layout_height="57dp"
+                android:layout_marginBottom="20dp"
+                android:background="@android:drawable/editbox_dropdown_light_frame"
+                android:backgroundTintMode="src_over"
                 android:ems="10"
-                android:text="@={viewModel.data}"
-                android:inputType="date"
-                app:layout_constraintStart_toEndOf="@+id/edittask"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="SpeakableTextPresentCheck" />
+                android:hint="Task title"
+                android:inputType="textPersonName"
+                android:text="@={viewModel.vmTitle}"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/calendertxtupdate"
+                app:layout_constraintEnd_toEndOf="@+id/textView"
+                app:layout_constraintStart_toStartOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                tools:ignore="TextContrastCheck" />
 
             <EditText
-                android:id="@+id/editdescription"
-                android:layout_width="305dp"
-                android:layout_height="218dp"
-                android:layout_marginTop="72dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="@={viewModel.subTitle}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edittask" />
-
-            <CheckBox
-                android:id="@+id/checkBox3"
+                android:id="@+id/calendertxtupdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="12dp"
-                android:text="important"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editdescription" />
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="44dp"
+                android:background="@android:drawable/editbox_dropdown_light_frame"
+                android:ems="10"
+                android:hint="date"
+                android:text="@={viewModel.vmData}"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/updatedescription"
+                app:layout_constraintEnd_toStartOf="@+id/calenderimg"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/updatetask"
+                app:layout_constraintTop_toBottomOf="@+id/updatetask" />
+
+            <ImageView
+                android:id="@+id/calenderimg"
+                android:layout_width="54dp"
+                android:layout_height="49dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="44dp"
+                android:background="@android:drawable/editbox_dropdown_light_frame"
+                android:onClick="@{()-> updateTask.pickDate()}"
+                app:layout_constraintBottom_toTopOf="@+id/updatedescription"
+                app:layout_constraintEnd_toEndOf="@+id/updatetask"
+                app:layout_constraintStart_toEndOf="@+id/calendertxtupdate"
+                app:layout_constraintTop_toBottomOf="@+id/updatetask"
+                app:layout_constraintVertical_bias="1.0"
+                app:srcCompat="@drawable/ic_baseline_calendar_today_24" />
+
+            <EditText
+                android:id="@+id/updatedescription"
+                android:layout_width="246dp"
+                android:layout_height="135dp"
+                android:background="@android:drawable/editbox_dropdown_light_frame"
+                android:ems="10"
+                android:hint="Description"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:text="@={viewModel.vmSubTitle}"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/updateButton"
+                app:layout_constraintEnd_toEndOf="@+id/calenderimg"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/calendertxtupdate"
+                app:layout_constraintTop_toBottomOf="@+id/calendertxtupdate"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <Button
-                android:id="@+id/updatebutton"
+                android:id="@+id/updateButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
-                android:text="update"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editdescription" />
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="160dp"
+                android:background="@android:drawable/editbox_dropdown_light_frame"
+                android:text="Update"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/updatedescription"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="@+id/updatedescription"
+                app:layout_constraintTop_toBottomOf="@+id/updatedescription" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </FrameLayout>
 </layout>
