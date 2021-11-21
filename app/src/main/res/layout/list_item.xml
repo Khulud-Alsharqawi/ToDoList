@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".listFragment"
->
+    tools:context=".listFragment">
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:background="#16D395B7"
+        android:layout_width="409dp"
+        android:layout_height="130dp"
         android:layout_marginTop="16dp"
-        android:layout_height="wrap_content"
-        >
+        android:background="#57F6EE90"
+        android:outlineProvider="bounds">
 
         <TextView
             android:id="@+id/tittelText"
@@ -40,9 +40,9 @@
 
         <TextView
             android:id="@+id/deudatetext"
-            android:layout_width="74dp"
-            android:layout_height="27dp"
-            android:layout_marginTop="68dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="76dp"
             android:text="@string/deudate"
             android:textColor="@color/black"
             android:textSize="16sp"
@@ -54,8 +54,8 @@
 
         <ImageButton
             android:id="@+id/deletButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="48dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
@@ -69,12 +69,12 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.937"
             app:srcCompat="@drawable/ic_baseline_delete_24"
-            tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
+            tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck,TouchTargetSizeCheck" />
 
         <ImageButton
             android:id="@+id/editbutton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@android:drawable/ic_menu_edit"
             android:contentDescription="TODO"
             app:layout_constraintBottom_toTopOf="@+id/deudatetext"
@@ -84,7 +84,32 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.8"
             app:srcCompat="@drawable/ic_baseline_create_24"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/creationDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="16dp"
+            android:text="creation Date"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tittelText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+
+        <TextView
+            android:id="@+id/isPast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="10dp"
+            android:text="past/still there time"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/deudatetext"
+            app:layout_constraintStart_toStartOf="@+id/deudatetext"
+            app:layout_constraintTop_toBottomOf="@+id/deudatetext" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

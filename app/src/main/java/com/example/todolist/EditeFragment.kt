@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
@@ -19,6 +20,8 @@ class EditeFragment : Fragment() {
 
     var cal = ""
     var binding: FragmentEditeBinding?=null
+    var isDatePass = false
+
 
     val shareViewModel : ViewModleTodo by viewModels()
 
@@ -43,16 +46,23 @@ class EditeFragment : Fragment() {
             viewModel=shareViewModel
             updateTask=this@EditeFragment
         }
-
+// update task
        var orignailTitle:String=""
         arguments?.let {
             orignailTitle=it.getString("title")!!
         }
         shareViewModel.grabTask(orignailTitle)
 
-        binding?.updateButton?.setOnClickListener { view:View ->
-            Navigation.findNavController(view).navigate(EditeFragmentDirections.actionEToList())
-            shareViewModel.edit(orignailTitle)
+        binding?.updateButton?.setOnClickListener {
+                compTime()
+            if(isDatePass == true ) {
+
+                Navigation.findNavController(view).navigate(EditeFragmentDirections.actionEToList())
+                shareViewModel.edit(orignailTitle)
+            }
+            else{
+                Toast.makeText(this.requireContext(),"enter right date",Toast.LENGTH_SHORT).show()
+            }
 
         }
     }
@@ -72,6 +82,19 @@ class EditeFragment : Fragment() {
         }
 
     }
+
+    fun compTime(){
+        var currentDate= Date()
+        val formatter = SimpleDateFormat("yyyy-MM-dd",Locale.US)
+        var taskTime=formatter.parse(shareViewModel.vmData.value.toString())
+        if (taskTime.before(currentDate)){
+            Toast.makeText(this.requireContext(),"the time you choose is not allowed", Toast.LENGTH_LONG).show()
+        }else{
+            isDatePass=true
+        }
+
+
+    }
     // fixed form
 
     private fun readDate(setDate: Long, datePattern: String): String {
@@ -79,11 +102,7 @@ class EditeFragment : Fragment() {
         return format.format(Date(setDate))
 
     }
-
         override fun onDestroy() {
             super.onDestroy()
-            binding=null
-        }
-
-
+            binding=null        }
 }
