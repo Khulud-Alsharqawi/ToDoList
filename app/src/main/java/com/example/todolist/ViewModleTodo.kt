@@ -35,10 +35,11 @@ class ViewModleTodo : ViewModel() {
 
 
     fun edit(title:String) {
+      //  Log.e("TAG", "edit 1 : ${vmData.value!!}", )
         var index = myDB.indexOfFirst { it.title.equals(title, ignoreCase = true) }
         myDB[index].title = vmTitle.value!!
         myDB[index].description = vmSubTitle.value!!
-        Log.e("TAG", "edit: ${vmData.value!!}", )
+      //  Log.e("TAG", "edit 2 : ${vmData.value!!}", )
         myDB[index].duedate = vmData.value!!
 
     }
@@ -49,4 +50,8 @@ class ViewModleTodo : ViewModel() {
         val calendar = Calendar.getInstance()
         vmcreationDay.value = formatter.format(calendar.time)
     }
+
+
+
+
 }

@@ -21,12 +21,15 @@ import java.util.*
 
 class AddTaskFragment : Fragment() {
 
-//    var cal = ""
+
     var binding: FragmentAddTaskBinding? = null
     var isDatePass = false
+    var dateInMelliSecond = 0L
 
-    val shareViewModel: ViewModleTodo by viewModels() // object of view model that connects with the fragment XML
-    override fun onCreate(savedInstanceState: Bundle?) {
+    val shareViewModel: ViewModleTodo by viewModels()
+
+    // object of view model that connects with the fragment XML
+       override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
@@ -35,7 +38,6 @@ class AddTaskFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         binding = FragmentAddTaskBinding.inflate(inflater, container, false)
         binding!!.lifecycleOwner = viewLifecycleOwner
         val view = binding?.root
@@ -60,7 +62,7 @@ class AddTaskFragment : Fragment() {
             }
         }
     }
-
+//-----------------------------------------------------
     fun pickDate() {
 
         // fixed form MaterialDatePicker
@@ -70,6 +72,7 @@ class AddTaskFragment : Fragment() {
         picker.addOnNegativeButtonClickListener {
         }
         picker.addOnPositiveButtonClickListener {
+
             shareViewModel.formatDate(it)        }
     }
 
@@ -77,6 +80,9 @@ class AddTaskFragment : Fragment() {
         var currentDate= Date()
         val formatter = SimpleDateFormat("yyyy-MM-dd",Locale.US)
         var taskTime=formatter.parse(shareViewModel.vmData.value.toString())
+        println(taskTime)
+        println("current = $currentDate")
+
         if (taskTime.before(currentDate)){
             Toast.makeText(this.requireContext(),"the time you choose is not allowed",Toast.LENGTH_LONG).show()
         }else{

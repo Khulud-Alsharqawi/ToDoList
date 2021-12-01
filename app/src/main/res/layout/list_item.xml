@@ -108,8 +108,10 @@
             android:text="past/still there time"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/deudatetext"
+            app:layout_constraintHorizontal_bias="0.633"
             app:layout_constraintStart_toStartOf="@+id/deudatetext"
-            app:layout_constraintTop_toBottomOf="@+id/deudatetext" />
+            app:layout_constraintTop_toBottomOf="@+id/deudatetext"
+            app:layout_constraintVertical_bias="0.428" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
